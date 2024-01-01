@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:recipies/pages/home.dart';
-import 'package:recipies/services/prefrences.pages.dart';
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -52,81 +51,85 @@ class _RegisterState extends State<Register> {
                 style: TextStyle(color: Colors.white),
               ),
               Container(
-                child: Form(
-                  key: fromKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          label: Text("UserName"),
-                          suffixIcon: Icon(Icons.person),
-                        ),
-                        keyboardType: TextInputType.name,
-                        controller: usernameController,
-                        validator: (value){
-                          if(value==null || value.isEmpty){
-                            return "username required";
-                          }
-                        },
-                      ),
-                      TextFormField(
-                          decoration: const InputDecoration(
-                            label: Text('Email'),
-                            suffixIcon: Icon(Icons.email),
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                          controller: emailController,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'email is required';
-                            }
-                            // if (!EmailValidator.validate(value)) {
-                            //   return 'Not Valid Email';
-                            // }
-                            return null;
-                          }),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                          decoration: InputDecoration(
-                              label: const Text('Password'),
-                              suffixIcon: InkWell(
-                                onTap: () => toggleObsecure(),
-                                child: Icon(obsecureText
-                                    ? Icons.visibility_off
-                                    : Icons.visibility),
-                              )),
-                          obscureText: obsecureText,
-                          controller: passwordController,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'password is required';
-                            }
-                            if (value.length < 6) {
-                              return 'password too short';
-                            }
-                            return null;
-                          }),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const HomePage()));
-                          },
-                          style: ElevatedButton.styleFrom(
-                              minimumSize: const Size(250, 50),
-                              backgroundColor: Colors.orange,
-                              padding: const EdgeInsets.symmetric(horizontal: 15)),
-                          child: const Text("Register",
-                              style: TextStyle(color: Colors.white))),
+                decoration: const BoxDecoration(
+                ),
+                child: Container(
 
-                    ],
+                  child: Form(
+                    key: fromKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            label: Text("UserName",style: TextStyle(color: Colors.white),),
+                            suffixIcon: Icon(Icons.person),iconColor: Colors.white,
+                          ),
+                          keyboardType: TextInputType.name,
+                          controller: usernameController,
+                          validator: (value){
+                            if(value==null || value.isEmpty){
+                              return "username required";
+                            }
+                          },
+                        ),
+                        TextFormField(
+                            decoration: const InputDecoration(
+                              label: Text('Email',style: TextStyle(color: Colors.white)),
+                              suffixIcon: Icon(Icons.email),iconColor: Colors.white,
+                            ),
+                            keyboardType: TextInputType.emailAddress,
+                            controller: emailController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'email is required';
+                              }
+                              // if (!EmailValidator.validate(value)) {
+                              //   return 'Not Valid Email';
+                              // }
+                              return null;
+                            }),
+                        TextFormField(
+                            decoration: InputDecoration(
+                                label: const Text('Password',style: TextStyle(color: Colors.white)),
+                                suffixIcon: InkWell(
+                                  onTap: () => toggleObsecure(),
+                                  child: Icon(obsecureText
+                                      ? Icons.visibility_off
+                                      : Icons.visibility
+                                  ),
+
+                                )),
+                            obscureText: obsecureText,
+                            controller: passwordController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'password is required';
+                              }
+                              if (value.length < 6) {
+                                return 'password too short';
+                              }
+                              return null;
+                            }),
+                  
+                      ],
+                    ),
                   ),
                 ),
-              )
+
+              ),
+              SizedBox(height: 70,),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const HomePage()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(250, 50),
+                      backgroundColor: Colors.orange,
+                      padding: const EdgeInsets.symmetric(horizontal: 15)),
+                  child: const Text("Register",
+                      style: TextStyle(color: Colors.white))),
+
             ],
           ),
         ),

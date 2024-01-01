@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipies/pages/register.dart';
 
+import 'login.dart';
+
 class Splash extends StatefulWidget {
   const Splash({super.key});
 
@@ -52,9 +54,12 @@ class _SplashState extends State<Splash> {
               ),
 
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const LoginPage()));
+
+                  },
                   child: const Text(
-                    "Sign Up",
+                    "Sign in",
                     style: TextStyle(color: Colors.white),
                   ))
             ],

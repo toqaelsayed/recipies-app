@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                               keyboardType: TextInputType.emailAddress,
                               controller: emailController,
                               decoration: const InputDecoration(
-                                label: Text('Email'),
+                                label: Text('Email', style: TextStyle(color: Colors.white)),
                                 suffixIcon: Icon(Icons.email),
                               ),
                               validator: (value) {
@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                               obscureText: obsecureText,
                               controller: passwordController,
                               decoration: InputDecoration(
-                                  label: const Text('Password'),
+                                  label: const Text('Password', style: TextStyle(color: Colors.white)),
                                   suffixIcon: InkWell(
                                     onTap: () => toggleObsecure(),
                                     child: Icon(obsecureText
@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                                 return null;
                               }),
                           const SizedBox(
-                            height: 15,
+                            height: 30,
                           ),
                           ElevatedButton(
                               onPressed: () async {
@@ -111,7 +111,13 @@ class _LoginPageState extends State<LoginPage> {
                                           builder: (_) => const HomePage()));
                                 }
                               },
-                              child: const Text('Login'))
+                              style: ElevatedButton.styleFrom(
+                                  minimumSize: const Size(250, 50),
+                                  backgroundColor: Colors.orange,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15)),
+                              child: const Text('Login',
+                                  style: TextStyle(color: Colors.white)))
                         ],
                       ),
                     ),
